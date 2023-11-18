@@ -1,5 +1,7 @@
 package com.hackathon.SmartSurucu.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -20,6 +22,8 @@ public class Driver {
     @JoinColumn(name = "driver_id")
     private List<Car> cars = new ArrayList<>();
 
+    @OneToMany(mappedBy = "driver", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<DrivingBehaviour> drivingBehaviour = new ArrayList<>();
 
 
     public Driver() {
@@ -81,5 +85,13 @@ public class Driver {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public List<DrivingBehaviour> getDrivingBehaviour() {
+        return drivingBehaviour;
+    }
+
+    public void setDrivingBehaviour(List<DrivingBehaviour> drivingBehaviour) {
+        this.drivingBehaviour = drivingBehaviour;
     }
 }

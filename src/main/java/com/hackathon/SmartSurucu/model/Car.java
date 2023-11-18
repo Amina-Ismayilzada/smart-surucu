@@ -1,5 +1,6 @@
 package com.hackathon.SmartSurucu.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -17,6 +18,7 @@ public class Car {
     private double averageCost;
 
     @ManyToOne
+    @JsonIgnore
     private Driver driver;
 
     public Car(Long id, String make, String model, String color, int year, double engineCapacity, String licensePlateNumber, double averageCost, Driver driver) {
