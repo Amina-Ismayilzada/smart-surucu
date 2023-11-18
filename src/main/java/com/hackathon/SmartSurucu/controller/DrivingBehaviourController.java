@@ -15,9 +15,9 @@ public class DrivingBehaviourController {
     @Autowired
     private DrivingBehaviorService drivingBehaviorService;
 
-//    @PostMapping("/add")
-//    public ResponseEntity<String> addDrivingBehavior(@RequestBody DrivingBehaviour drivingBehavior) {
-//        drivingBehaviorService.saveDrivingBehavior(drivingBehavior);
-//        return new ResponseEntity<>("Driving behavior data added successfully", HttpStatus.CREATED);
-//    }
+    @PostMapping("/add")
+    public String addDrivingBehavior(@RequestBody DrivingBehaviour drivingBehavior) {
+        drivingBehaviorService.saveDrivingBehavior(drivingBehavior);
+        return "saved";
+    }
 }
