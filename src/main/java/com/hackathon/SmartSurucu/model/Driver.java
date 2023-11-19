@@ -22,16 +22,15 @@ public class Driver {
     @JoinColumn(name = "driver_id")
     private List<Car> cars = new ArrayList<>();
 
-    @OneToMany(mappedBy = "driver", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<DrivingBehaviour> drivingBehaviour = new ArrayList<>();
-
+    @OneToOne(mappedBy = "driver", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private DrivingBehaviour drivingBehaviour;
 
     public Driver() {
 
     }
 
-    public Driver(Long id, String name, String surname, String FIN, String phoneNumber, List<Car> cars) {
-        this.id = id;
+    public Driver(String name, String surname, String FIN, String phoneNumber, List<Car> cars) {
+        super();
         this.name = name;
         this.surname = surname;
         this.FIN = FIN;
@@ -87,11 +86,11 @@ public class Driver {
         this.phoneNumber = phoneNumber;
     }
 
-    public List<DrivingBehaviour> getDrivingBehaviour() {
+    public DrivingBehaviour getDrivingBehaviour() {
         return drivingBehaviour;
     }
 
-    public void setDrivingBehaviour(List<DrivingBehaviour> drivingBehaviour) {
+    public void setDrivingBehaviour(DrivingBehaviour drivingBehaviour) {
         this.drivingBehaviour = drivingBehaviour;
     }
 }

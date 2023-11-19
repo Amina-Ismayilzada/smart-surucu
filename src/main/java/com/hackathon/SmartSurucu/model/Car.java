@@ -21,8 +21,8 @@ public class Car {
     @JsonIgnore
     private Driver driver;
 
-    public Car(Long id, String make, String model, String color, int year, double engineCapacity, String licensePlateNumber, double averageCost, Driver driver) {
-        this.id = id;
+    public Car(String make, String model, String color, int year, double engineCapacity, String licensePlateNumber, double averageCost, Driver driver) {
+        super();
         this.make = make;
         this.model = model;
         this.color = color;

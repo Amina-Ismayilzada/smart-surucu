@@ -15,4 +15,5 @@ public enum DrivingStatus {
     DrivingStatus(String name) {
         this.name = name;
     }
+
 }
