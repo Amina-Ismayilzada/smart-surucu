@@ -17,9 +17,8 @@ public class DriverController {
     private DriverService driverService;
 
     @PostMapping("/add")
-    public String add(@RequestBody Driver driver){
-        driverService.saveDriver(driver);
-        return "New driver is added";
+    public Driver add(@RequestBody Driver driver){
+        return driverService.saveDriver(driver);
     }
 
     @GetMapping("/all")
