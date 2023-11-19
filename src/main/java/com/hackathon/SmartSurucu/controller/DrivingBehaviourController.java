@@ -1,6 +1,5 @@
 package com.hackathon.SmartSurucu.controller;
 
-import com.hackathon.SmartSurucu.model.Driver;
 import com.hackathon.SmartSurucu.model.DrivingBehaviour;
 import com.hackathon.SmartSurucu.service.DrivingBehaviorService;
 import org.springframework.beans.factory.annotation.Autowired;

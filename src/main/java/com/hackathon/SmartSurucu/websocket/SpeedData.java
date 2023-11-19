@@ -1,8 +1,8 @@
 package com.hackathon.SmartSurucu.websocket;
 
 public class SpeedData  {
-    private double speed;
     private long driverId;
+    private double speed;
 
     public SpeedData(double speed) {
         this.speed = speed;

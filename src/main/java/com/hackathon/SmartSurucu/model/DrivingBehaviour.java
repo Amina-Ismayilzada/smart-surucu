@@ -1,5 +1,6 @@
 package com.hackathon.SmartSurucu.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -17,25 +18,11 @@ public class DrivingBehaviour {
 
     @OneToOne
     @JoinColumn(name = "driver_id", unique = true)
+    @JsonIgnore
     private Driver driver;
 
-/*
 
-{
-  "driver": {
-    "id": 4
-  },
-  "penalty": {
-    "abruptStopCount": 2,
-    "accelerationCount": 1,
-    "radar20Count": 4,
-    "radar40Count": 1,
-    "redLightCount": 0,
-    "drunkCount": 0
-  },
-  "status": "GOOD"
-}
- */
+
     @Enumerated(EnumType.STRING)
     private DrivingStatus status;
 

@@ -1,4 +1,4 @@
-package com.hackathon.SmartSurucu.model.dataseed;
+package com.hackathon.SmartSurucu.dataseed;
 
 import com.hackathon.SmartSurucu.model.Car;
 import com.hackathon.SmartSurucu.model.Driver;
@@ -10,10 +10,6 @@ import com.hackathon.SmartSurucu.repository.DrivingBehaviourRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.List;
-
 @Component
 public class DataSeeder implements CommandLineRunner {
 
@@ -27,7 +23,7 @@ public class DataSeeder implements CommandLineRunner {
     private DrivingBehaviourRepository drivingBehaviourRepository;
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         seedData();
     }
 
