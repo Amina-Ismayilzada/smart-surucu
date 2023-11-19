@@ -3,6 +3,7 @@
 package com.hackathon.SmartSurucu.service;
 
 
+import com.hackathon.SmartSurucu.model.Driver;
 import com.hackathon.SmartSurucu.model.DrivingBehaviour;
 import com.hackathon.SmartSurucu.model.DrivingStatus;
 import com.hackathon.SmartSurucu.repository.DrivingBehaviourRepository;
@@ -152,7 +153,10 @@ public class DrivingBehaviourServiceImpl implements DrivingBehaviorService {
         drivingBehaviourRepository.deleteById(id);
     }
 
-
+    @Override
+    public DrivingBehaviour getDrivingBehaviourById(Long id) {
+        return drivingBehaviourRepository.findById(id).get();
+    }
 
 
 }

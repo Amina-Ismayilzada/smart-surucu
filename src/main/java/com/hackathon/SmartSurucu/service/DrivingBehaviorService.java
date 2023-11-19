@@ -1,5 +1,6 @@
 package com.hackathon.SmartSurucu.service;
 
+import com.hackathon.SmartSurucu.model.Driver;
 import com.hackathon.SmartSurucu.model.DrivingBehaviour;
 import com.hackathon.SmartSurucu.model.DrivingStatus;
 import org.springframework.data.crossstore.ChangeSetPersister;
@@ -14,4 +15,6 @@ public interface DrivingBehaviorService {
     public DrivingBehaviour updateDrivingBehavior(DrivingBehaviour drivingBehavior, LocalDateTime currentTime);
 
     void deleteDrivingBehaviour(Long id);
+
+    DrivingBehaviour getDrivingBehaviourById(Long id);
 }

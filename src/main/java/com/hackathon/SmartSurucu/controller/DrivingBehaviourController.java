@@ -1,5 +1,6 @@
 package com.hackathon.SmartSurucu.controller;
 
+import com.hackathon.SmartSurucu.model.Driver;
 import com.hackathon.SmartSurucu.model.DrivingBehaviour;
 import com.hackathon.SmartSurucu.service.DrivingBehaviorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,11 @@ public class DrivingBehaviourController {
     @PostMapping("/add")
     public DrivingBehaviour addDrivingBehavior(@RequestBody DrivingBehaviour drivingBehavior) {
         return drivingBehaviorService.saveDrivingBehavior(drivingBehavior);
+    }
+
+    @GetMapping("/{id}")
+    public DrivingBehaviour getDrivingBehaviorById(@PathVariable Long id) {
+        return drivingBehaviorService.getDrivingBehaviourById(id);
     }
 
     @PutMapping("/{id}")
