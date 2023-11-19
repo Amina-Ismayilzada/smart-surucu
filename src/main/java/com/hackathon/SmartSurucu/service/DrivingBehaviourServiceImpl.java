@@ -33,6 +33,7 @@ public class DrivingBehaviourServiceImpl implements DrivingBehaviorService {
     public DrivingBehaviour saveDrivingBehavior(DrivingBehaviour drivingBehavior) {
         return drivingBehaviourRepository.save(drivingBehavior);
     }
+    // keeping track of the driver's penalties by updating the data each time driver gets a fine
     @Override
     public DrivingBehaviour updatePenalty(Long id, DrivingBehaviour drivingBehavior, int abruptStopCount, int accelerationCount,
                                           int radar20Count, int radar40Count, int redLightCount, int drunkCount) {
@@ -47,9 +48,13 @@ public class DrivingBehaviourServiceImpl implements DrivingBehaviorService {
         updateDrivingBehavior(drivingBehavior, currentTime);
         return drivingBehavior;
     }
-
+    /*
+    Based on certain criteria the insurance cost and driver status will change. The criterias include:
+     how many times a specific rule was broken, how many accelaration, or abrupt stoppings was detected
+     */
     @Override
     public DrivingBehaviour updateDrivingBehavior(DrivingBehaviour drivingBehavior, LocalDateTime currentTime){
+        // current time is used in order to keep record of 1 year's penalties
         LocalDateTime behaviorTimestamp = drivingBehavior.getTimestamp();
         
         double finalCost = 0;
@@ -120,6 +125,7 @@ public class DrivingBehaviourServiceImpl implements DrivingBehaviorService {
                 }
             }
         } else {
+            // after one year the fines are annuled, but the status is kept unchanged
             drivingBehavior.setRadar20Count(0);
             drivingBehavior.setRadar40Count(0);
             drivingBehavior.setRedLightCount(0);
@@ -127,7 +133,7 @@ public class DrivingBehaviourServiceImpl implements DrivingBehaviorService {
             drivingBehavior.setAccelerationCount(0);
             drivingBehavior.setAbruptStopCount(0);
 
-
+            // cost calculation based on status
             if(drivingBehavior.getStatus()== DrivingStatus.GREAT){
                 finalCost = drivingBehavior.getInsuranceCost()*0.1 + drivingBehavior.getInsuranceCost();
             } else if(drivingBehavior.getStatus()== DrivingStatus.GOOD){
@@ -140,8 +146,6 @@ public class DrivingBehaviourServiceImpl implements DrivingBehaviorService {
                 finalCost = drivingBehavior.getInsuranceCost()*0.9;
             }
             drivingBehavior.setInsuranceCost(finalCost);
-
-
         }
 
         return drivingBehavior;
@@ -157,6 +161,4 @@ public class DrivingBehaviourServiceImpl implements DrivingBehaviorService {
     public DrivingBehaviour getDrivingBehaviourById(Long id) {
         return drivingBehaviourRepository.findById(id).get();
     }
-
-
 }

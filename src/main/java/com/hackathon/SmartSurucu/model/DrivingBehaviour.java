@@ -5,8 +5,10 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-import static com.hackathon.SmartSurucu.model.DrivingStatus.AVERAGE;
-
+/*
+This entity describes the behaviour of the driver on the road such as them getting
+different fines, accelerating, abrupt stopping and etc.
+ */
 @Entity
 public class DrivingBehaviour {
     @Id
@@ -44,15 +46,6 @@ public class DrivingBehaviour {
     private int radar40Count;
     private int redLightCount;
     private int drunkCount;
-
-    public double getInsuranceCost() {
-        return insuranceCost;
-    }
-
-    public void setInsuranceCost(double insuranceCost) {
-        this.insuranceCost = insuranceCost;
-    }
-
     private double insuranceCost;
 
 
@@ -101,9 +94,16 @@ public class DrivingBehaviour {
     public Driver getDriver() {
         return driver;
     }
-
     public void setDriver(Driver driver) {
         this.driver = driver;
+    }
+
+    public double getInsuranceCost() {
+        return insuranceCost;
+    }
+
+    public void setInsuranceCost(double insuranceCost) {
+        this.insuranceCost = insuranceCost;
     }
 
     public DrivingStatus getStatus() {

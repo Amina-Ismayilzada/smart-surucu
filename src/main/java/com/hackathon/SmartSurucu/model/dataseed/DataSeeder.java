@@ -1,4 +1,4 @@
-package com.hackathon.SmartSurucu.seed;
+package com.hackathon.SmartSurucu.model.dataseed;
 
 import com.hackathon.SmartSurucu.model.Car;
 import com.hackathon.SmartSurucu.model.Driver;
